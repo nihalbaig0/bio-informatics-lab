@@ -1,19 +1,5 @@
 from Bio.Seq import Seq
 
-def reverse_complement(text):
-  d = {
-      'A': 'T',
-      'T': 'A',
-      'G': 'C',
-      'C': 'G'
-  }
-  text = text[::-1]
-  ans = ""
-  for ch in text:
-    ans += d[ch]
-  return ans
-
-option = []
 if __name__ == "__main__":
   text = "ATGGCCATGGCCCCCAGAACTGAGATCAATAGTACCCGTATTAACGGGTGA"
   p = "MA"
@@ -29,6 +15,5 @@ if __name__ == "__main__":
   for i in range(n-k+1):
     sub = text[i:i+k]
     kmers.append(text[i:i+k])
-    if (Seq(p) == Seq(sub).translate() or Seq(p) == Seq(reverse_complement(sub)).translate()):
+    if (Seq(p) == Seq(sub).translate() or Seq(p) == Seq(sub).reverse_complement().translate()):
       print(sub)
-
